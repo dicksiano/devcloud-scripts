@@ -1,5 +1,5 @@
-#PBS -o rlalgo_${PBS_JOBID}-o.txt
-#PBS -e rlalgo_${PBS_JOBID}-e.txt
+#PBS -o rlalgodist_${PBS_JOBID}-o.txt
+#PBS -e rlalgodist_${PBS_JOBID}-e.txt
 
 
 ### Inputs ###
