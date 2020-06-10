@@ -3,39 +3,43 @@
 #PBS -e distr_train__${PBS_JOBID}-e.txt
 
 ### Inputs ###
-j=$1
-agents=$2
+nodes=$1
+ppn=$2
+hash=$3
 
 # Agent #
-max_v=$3
-rw_fac=$4
-col_vel=$5
-kp=$6
-xw=$7
-yw=$8
-zw=$9
+max_v=$4
+rw_fac=$5
+col_vel=$6
+kp=$7
+xw=$8
+yw=$9
+zw=${10}
 
 # Neural Net #
-sched=${10}
-hid_size=${11}
-num_hid_layers=${12}
-expl_rate=${13}
+sched=${11}
+hid_size=${12}
+num_hid_layers=${13}
+expl_rate=${14}
 
 # PPO #
-max_timesteps=${14}
-timesteps_per_ab=${15}
-clip_param=${16}
-ent_coeff=${17}
-epochs=${18}
-lr=${19}
-batch_s=${20}
-gamma=${21}
-lambd=${22}
+max_timesteps=${15}
+timesteps_per_ab=${16}
+clip_param=${17}
+ent_coeff=${18}
+epochs=${19}
+lr=${20}
+batch_s=${21}
+gamma=${22}
+lambd=${23}
 
+
+workers=$[nodes*ppn]
 echo "nodes: ${nodes}"
 echo "ppn: ${ppn}"
 echo "workers: ${workers}"
 #qsub each of the jobs
+
 
 >nodes
 for ((i=0; i < ${nodes}; i++))
