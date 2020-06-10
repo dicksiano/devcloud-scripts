@@ -42,7 +42,7 @@ do
 	SPORT=$[3000 + i + node*processes]
 	MPORT=$[3300 + i + node*processes]
 
-	hostname >> >> ~/distributed_devcloud/nodes
+	hostname >> ~/distributed_devcloud/nodes
 	
     echo "Server Port ${SPORT}"
 	echo "Monitor Port ${MPORT}"
