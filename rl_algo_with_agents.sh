@@ -2,17 +2,35 @@
 #PBS -o rl_algo__${PBS_JOBID}-o.txt
 #PBS -e rl_algo__${PBS_JOBID}-e.txt
 
-workers=$1
-j=$2
+### Inputs ###
+j=$1
+agents=$2
+
+# Agent #
 max_v=$3
 rw_fac=$4
 col_vel=$5
-expl_rate=$6
-kp=$7
-xw=$8
-yw=$9
-zw=${10}
-lr=${11}
+kp=$6
+xw=$7
+yw=$8
+zw=$9
+
+# Neural Net #
+sched=${10}
+hid_size=${11}
+num_hid_layers=${12}
+expl_rate=${13}
+
+# PPO #
+max_timesteps=${14}
+timesteps_per_ab=${15}
+clip_param=${16}
+ent_coeff=${17}
+epochs=${18}
+lr=${19}
+batch_s=${20}
+gamma=${21}
+lambd=${22}
 
 plusworkers=10
 totalworkers=$((workers+plusworkers))
@@ -37,6 +55,7 @@ done
 echo "finish."
 
 
-sleep 30
-cd ~/distributed_devcloud
-qsub -F "${totalworkers} ${j} ${max_v} ${rw_fac} ${col_vel} ${expl_rate} ${kp} ${xw} ${yw} ${zw} ${lr} "  start_rl_server.sh
+### RL SERVER ###
+echo "RL SERVER"
+echo $( pwd )
+~/distributed_devcloud/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes
