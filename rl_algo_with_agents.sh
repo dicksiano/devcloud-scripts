@@ -1,6 +1,6 @@
 #PBS -l walltime=06:30:00
-#PBS -o rl_algo__${PBS_JOBID}-o.txt
-#PBS -e rl_algo__${PBS_JOBID}-e.txt
+#PBS -o rlalgoagents__${PBS_JOBID}-o.txt
+#PBS -e rlalgoagents__${PBS_JOBID}-e.txt
 
 ### Inputs ###
 j=$1
@@ -58,4 +58,6 @@ echo "finish."
 ### RL SERVER ###
 echo "RL SERVER"
 echo $( pwd )
-~/distributed_devcloud/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes
+echo "Total agents"
+echo $(totalworkers)
+~/devcloud-scripts/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes
