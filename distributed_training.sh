@@ -44,7 +44,7 @@ echo "workers: ${workers}"
 >nodes
 for ((i=0; i < ${nodes}; i++))
 do 
-	qsub -F "${ppn} ${i} ${j} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} " nodes_full_agents.sh;
+	qsub -F "${ppn} ${i} ${hash} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} " nodes_full_agents.sh;
 	sleep 35; 
 done;
 
@@ -65,4 +65,4 @@ echo "all nodes allocated."
 
 echo "total of ${workers} workers."
 sleep 30
-qsub -F "${j} ${workers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd}"  rl_algo_with agents.sh
+qsub -F "${hash} ${workers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd}"  rl_algo_with_agents.sh

@@ -44,14 +44,19 @@ do
 
 	hostname >> ~/distributed_devcloud/nodes
 	
-    echo "Server Port ${SPORT}"
+	echo "Server Port ${SPORT}"
 	echo "Monitor Port ${MPORT}"
 	echo $( pwd )
 	
-    ~/start_rcssserver3d.sh ${SPORT} ${MPORT} & 
+	~/start_rcssserver3d.sh ${SPORT} ${MPORT} & 
 	sleep 2;
-	
-    ~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} true > ~/distributed_devcloud/agent_${processes}_${j}_${i}.txt &
+
+	if [ "$i" -eq  "$[processes - 1]" ]; then
+		echo "Starting last agent"
+           	~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} true > ~/distributed_devcloud/agent_${processes}_${j}_${node}_${i}.txt
+    	else
+		~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} true > ~/distributed_devcloud/agent_${processes}_${j}_${node}_${i}.txt &
+    	fi	
 	sleep 2;
 	echo "finishing iteration ${i}"
 done 
