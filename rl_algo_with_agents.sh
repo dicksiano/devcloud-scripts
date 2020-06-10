@@ -33,7 +33,7 @@ gamma=${21}
 lambd=${22}
 
 plusworkers=10
-totalworkers=$((workers+plusworkers))
+totalworkers=$((agents+plusworkers))
 
 for ((i=0; i < 10; i++))
 do
