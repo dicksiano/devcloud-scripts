@@ -32,10 +32,10 @@ batch_s=${20}
 gamma=${21}
 lambd=${22}
 
-plusworkers=10
+plusworkers=0
 totalworkers=$((agents+plusworkers))
 
-for ((i=0; i < 10; i++))
+for ((i=0; i < ${plusworkers}; i++))
 do
 	SPORT=$[3000 + i]
 	MPORT=$[3300 + i]
@@ -56,8 +56,9 @@ echo "finish."
 
 
 ### RL SERVER ###
+sleep 10;
 echo "RL SERVER"
 echo $( pwd )
 echo "Total agents"
-echo $(totalworkers)
+echo ${totalworkers}
 ~/devcloud-scripts/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes

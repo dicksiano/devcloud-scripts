@@ -45,7 +45,7 @@ source activate learning-3d
 echo $( pwd )
 echo ${agents}
 echo ${max_timesteps}
-echo ${nodes}
+echo ${file}
 mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecovery \
                                                     --learning_rate=${lr} \
                                                     --timesteps_per_actorbatch=${timesteps_per_ab} \
