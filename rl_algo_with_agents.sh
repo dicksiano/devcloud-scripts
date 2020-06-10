@@ -32,13 +32,13 @@ batch_s=${20}
 gamma=${21}
 lambd=${22}
 
-plusworkers=0
+plusworkers=10
 totalworkers=$((agents+plusworkers))
 
 for ((i=0; i < ${plusworkers}; i++))
 do
-	SPORT=$[3000 + i]
-	MPORT=$[3300 + i]
+	SPORT=$[3000 + i + agents ]
+	MPORT=$[3300 + i + agents ]
 	
     hostname >> ~/distributed_devcloud/nodes
 	
