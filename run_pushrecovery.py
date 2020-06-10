@@ -33,7 +33,7 @@ def train(env_id,
             schedule,
             hid_siz,
             num_hid_layers):
-    from baselines.ppo1 import mlp_policy, kick_policy, pposgd_simple, reward_scaler
+    from baselines.ppo1 import pushrecovery_policy, kick_policy, pposgd_simple, reward_scaler
     rank = MPI.COMM_WORLD.Get_rank()
     U.make_session(num_cpu=1).__enter__()
     workerseed = seed + 10000 * rank
