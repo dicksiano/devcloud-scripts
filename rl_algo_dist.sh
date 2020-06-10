@@ -46,7 +46,7 @@ echo $( pwd )
 echo ${agents}
 echo ${max_timesteps}
 echo ${nodes}
-mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_soccer \
+mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecovery \
                                                     --learning_rate=${lr} \
                                                     --timesteps_per_actorbatch=${timesteps_per_ab} \
                                                     --batch_size=${batch_s} \
