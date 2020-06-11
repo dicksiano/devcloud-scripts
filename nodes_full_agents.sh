@@ -48,6 +48,7 @@ do
 	echo "Monitor Port ${MPORT}"
 	echo $( pwd )
 	
+	cd --
 	~/start_rcssserver3d.sh ${SPORT} ${MPORT} & 
 	sleep 2;
 

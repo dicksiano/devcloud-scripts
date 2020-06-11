@@ -32,7 +32,7 @@ batch_s=${20}
 gamma=${21}
 lambd=${22}
 
-plusworkers=10
+plusworkers=0
 totalworkers=$((agents+plusworkers))
 
 for ((i=0; i < ${plusworkers}; i++))
@@ -40,16 +40,17 @@ do
 	SPORT=$[3000 + i + agents ]
 	MPORT=$[3300 + i + agents ]
 	
-    hostname >> ~/distributed_devcloud/nodes
+	hostname >> ~/distributed_devcloud/nodes
 	
-    echo "Server Port ${SPORT}"
+	echo "Server Port ${SPORT}"
 	echo "Monitor Port ${MPORT}"
 	echo $( pwd )
 	
-    ~/start_rcssserver3d.sh ${SPORT} ${MPORT} & 
+	cd --
+	~/start_rcssserver3d.sh ${SPORT} ${MPORT} & 
 	sleep 2;
 	
-    ~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} true > ~/distributed_devcloud/agent_${j}_4_${i}.txt &
+	~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} true > ~/distributed_devcloud/agent_${j}_4_${i}.txt &
 	echo "finishing iteration ${i}"
 done 
 echo "finish."
@@ -61,4 +62,5 @@ echo "RL SERVER"
 echo $( pwd )
 echo "Total agents"
 echo ${totalworkers}
+cd ~/devcloud-scripts/
 ~/devcloud-scripts/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes
