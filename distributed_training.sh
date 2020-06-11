@@ -63,5 +63,20 @@ done
 echo "all nodes allocated."
 
 
+#wait for all agents to connect
+up_agents=0
+time=0
+
+while [ $up_agents -ne $workers ]
+do
+ up_agents=`ls -lR ~/distributed_devcloud/agent_*.txt | wc -l`
+ echo "waiting for agents to connect.. time:" $(($time/600))"min"
+ echo "$up_agents/${workers} already up."
+ sleep 15
+ let "time=time+15"
+done
+echo "all agents up!"
+
+
 echo "total of ${workers} workers."
 qsub -F "${hash} ${workers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd}"  rl_algo_with_agents.sh
