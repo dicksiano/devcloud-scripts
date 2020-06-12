@@ -32,7 +32,7 @@ batch_s=${20}
 gamma=${21}
 lambd=${22}
 
-plusworkers=15
+plusworkers=50
 totalworkers=$((agents+plusworkers))
 
 for ((i=0; i < ${plusworkers}; i++))
