@@ -1,4 +1,4 @@
-#PBS -l walltime=06:30:00
+#PBS -l walltime=09:30:00
 #PBS -o distr_train__${PBS_JOBID}-o.txt
 #PBS -e distr_train__${PBS_JOBID}-e.txt
 
