@@ -3,7 +3,7 @@ import time
 import itertools
 
 ### INTEL DEV CLOUD PARAMETERS ###
-AGENTS_PER_NODE = [90]
+AGENTS_PER_NODE = [150]
 SEED = [1]
 
 ### AGENT PARAMETERS ###
@@ -11,24 +11,24 @@ MAX_VS = [1.0]
 RADIUS =  [999999999999999]
 REWARD_RADIUS = [999999999999999]
 COOLDOWN_TIME =  [999999999999999]
-REWARD_FACTORS = [1, 0.001]
+REWARD_FACTORS = [1, 0.000001]
 COLLISION_VELS = [2.1]
 KP = [15]
-BARRIER = [ [50, 50, 50], [65, 65, 65] ]
+BARRIER = [ [40, 40, 40] ]
 DERIVATIVE_OBS = [999999999999999]
 EVALUATE_BASELINE = [999999999999999]
 NUM_STEP_SAME_INPUT = [999999999999999]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['linear', 'constant']
-HID_SIZE = [8, 100]
+HID_SIZE = [8]
 NUM_HIDDEN_LAYERS = [2]
-EXPL_RATE = [-3, -7]
+EXPL_RATE = [-3]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [10000000]
+MAXI_TIMESTEPS = [15000000]
 TIMESTEPS_AB = [4096]
-CLIP_PARAM = [ 0.1, 0.3]
+CLIP_PARAM = [ 0.1]
 ENT_COEFF = [0.01]
 EPOCHS = [ 10 ]
 LR = [1e-3]
@@ -44,7 +44,6 @@ search_space = itertools.product(AGENTS_PER_NODE,
                     MAXI_TIMESTEPS, TIMESTEPS_AB, CLIP_PARAM, ENT_COEFF, EPOCHS, LR, BATCH_SIZE, GAMMA, LAMBD)
 
 
-print(search_space)
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
     for replica in range(1):
         strings = ["qsub -F \"" , 
