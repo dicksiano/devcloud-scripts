@@ -56,6 +56,22 @@ done
 echo "finish."
 
 
+## Sanity check
+# wait for all agents to connect
+up_agents=0
+time=0
+
+while [ $up_agents -ne $totalworkers ]
+do
+ up_agents=`ls -lR ~/distributed_devcloud/agent_*.txt | wc -l`
+ echo "waiting for agents to connect.. time:" $(($time/600))"min"
+ echo "$up_agents/${totalworkers} already up."
+ sleep 15
+ let "time=time+15"
+done
+echo "all agents up!"
+
+
 ### RL SERVER ###
 sleep 10;
 echo "RL SERVER"
