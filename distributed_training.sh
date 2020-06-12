@@ -41,9 +41,24 @@ echo "workers: ${workers}"
 #qsub each of the jobs
 
 
->nodes
+touch ~/distributed_devcloud/nodes
+lines_nodes=0
+time=0
+expected=0
+
 for ((i=0; i < ${nodes}; i++))
 do 
+	expected=$[i*ppn]
+	while [ $lines_nodes -ne $expected ]
+	do
+		lines_nodes=`wc -l < ~/distributed_devcloud/nodes`
+		 echo "waiting for agents to write.. time:" $(($time/600))"min"
+		 echo "$lines_nodes/${expected} already up."
+		 sleep 15
+		let "time=time+15"
+	done
+	echo "all agents haven written!"
+
 	qsub -F "${ppn} ${i} ${hash} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} " nodes_full_agents.sh;
 	sleep 35; 
 done;
@@ -54,11 +69,11 @@ time=0
 
 while [ $allocated -ne $nodes ]
 do
- allocated=`qstat -r | grep "R " | wc -l`
- echo "waiting for allocated nodes.. time:" $(($time/600))"min"
- echo "$allocated/${nodes} already allocated."
- sleep 10 
- let "time=time+10"
+	allocated=`qstat -r | grep "R " | wc -l`
+	echo "waiting for allocated nodes.. time:" $(($time/600))"min"
+	echo "$allocated/${nodes} already allocated."
+	sleep 10 
+	let "time=time+10"
 done
 echo "all nodes allocated."
 
