@@ -14,7 +14,7 @@ COOLDOWN_TIME =  [999999999999999]
 REWARD_FACTORS = [1, 0.000001]
 COLLISION_VELS = [2.1]
 KP = [15]
-BARRIER = [ [30, 30, 30], [40, 40, 40], [60, 60, 60] ]
+BARRIER = [ [40, 40, 40], [0, 0,0] ]
 DERIVATIVE_OBS = [999999999999999]
 EVALUATE_BASELINE = [999999999999999]
 NUM_STEP_SAME_INPUT = [999999999999999]
@@ -45,7 +45,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
-    for replica in range(3):
+    for replica in range(5):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
