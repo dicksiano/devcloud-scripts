@@ -8,29 +8,35 @@ agents=$2
 
 # Agent #
 max_v=$3
-rw_fac=$4
-col_vel=$5
-kp=$6
-xw=$7
-yw=$8
-zw=$9
+radius=$4
+rew_radius=$5
+cooldown_time=$6
+rw_fac=$7
+col_vel=$8
+kp=$9
+xw=${10}
+yw=${11}
+zw=${12}
+deriv_obs=${13}
+eval_baseline=${14}
+num_step_same_input=${15}
 
 # Neural Net #
-sched=${10}
-hid_size=${11}
-num_hid_layers=${12}
-expl_rate=${13}
+sched=${16}
+hid_size=${17}
+num_hid_layers=${18}
+expl_rate=${19}
 
 # PPO #
-max_timesteps=${14}
-timesteps_per_ab=${15}
-clip_param=${16}
-ent_coeff=${17}
-epochs=${18}
-lr=${19}
-batch_s=${20}
-gamma=${21}
-lambd=${22}
+max_timesteps=${20}
+timesteps_per_ab=${21}
+clip_param=${22}
+ent_coeff=${23}
+epochs=${24}
+lr=${25}
+batch_s=${26}
+gamma=${27}
+lambd=${28}
 
 plusworkers=50
 totalworkers=$((agents+plusworkers))
@@ -50,7 +56,7 @@ do
 	~/start_rcssserver3d.sh ${SPORT} ${MPORT} & 
 	sleep 2;
 	
-	~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} true > ~/distributed_devcloud/agent_${j}_4_${i}.txt &
+	~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${radius} ${rew_radius} ${cooldown_time} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${deriv_obs} ${eval_baseline} ${num_step_same_input} true > ~/distributed_devcloud/agent_${j}_4_${i}.txt &
 	echo "finishing iteration ${i}"
 done 
 echo "finish."
@@ -79,4 +85,4 @@ echo $( pwd )
 echo "Total agents"
 echo ${totalworkers}
 cd ~/devcloud-scripts/
-~/devcloud-scripts/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes
+~/devcloud-scripts/rl_algo_dist.sh ${j} ${totalworkers} ${max_v} ${radius} ${rew_radius} ${cooldown_time} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${deriv_obs} ${eval_baseline} ${num_step_same_input} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes

@@ -10,34 +10,38 @@ agents=$2
 
 # Agent #
 max_v=$3
-rw_fac=$4
-col_vel=$5
-kp=$6
-xw=$7
-yw=$8
-zw=$9
-
+radius=$4
+rew_radius=$5
+cooldown_time=$6
+rw_fac=$7
+col_vel=$8
+kp=$9
+xw=${10}
+yw=${11}
+zw=${12}
+deriv_obs=${13}
+eval_baseline=${14}
+num_step_same_input=${15}
 
 # Neural Net #
-sched=${10}
-hid_size=${11}
-num_hid_layers=${12}
-expl_rate=${13}
-
+sched=${16}
+hid_size=${17}
+num_hid_layers=${18}
+expl_rate=${19}
 
 # PPO #
-max_timesteps=${14}
-timesteps_per_ab=${15}
-clip_param=${16}
-ent_coeff=${17}
-epochs=${18}
-lr=${19}
-batch_s=${20}
-gamma=${21}
-lambd=${22}
+max_timesteps=${20}
+timesteps_per_ab=${21}
+clip_param=${22}
+ent_coeff=${23}
+epochs=${24}
+lr=${25}
+batch_s=${26}
+gamma=${27}
+lambd=${28}
 
 # Node file
-file=${23}
+file=${29}
 
 cd $PBS_O_WORKDIR
 cd ~/ddpg-humanoid
@@ -67,4 +71,10 @@ mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecov
                                                     --epochs=${epochs} \
                                                     --gamma=${gamma} \
                                                     --lambd=${lambd} \
-                                                    --num_hid_layers=${num_hid_layers}
+                                                    --num_hid_layers=${num_hid_layers} \
+                                                    --radius=${radius} \
+                                                    --reward_radius=${rew_radius} \
+                                                    --cooldown_time=${cooldown_time} \
+                                                    --derivative=${deriv_obs} \
+                                                    --eval_basel=${eval_baseline} \
+                                                    --num_t_same_input=${num_step_same_input}

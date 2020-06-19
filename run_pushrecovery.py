@@ -117,12 +117,18 @@ def main():
     # logger.configure()
 
     filename =  str(args.max_vel).replace('.','*') + "_" + \
+                str(args.radius).replace('.','*') + "_" + \
+                str(args.reward_radius).replace('.','*') + "_" + \
+                str(args.cooldown_time).replace('.','*') + "_" + \
                 str(args.reward_factor).replace('.','*') + "_" + \
                 str(args.collision_vel).replace('.','*') + "_" + \
                 str(args.kp).replace('.','*') + "_" + \
                 str(args.xw).replace('.','*') + "_" + \
                 str(args.yw).replace('.','*') + "_" + \
-                str(args.zw).replace('.','*') + "___" + \
+                str(args.zw).replace('.','*') + "_" + \
+                str(args.derivative).replace('.','*') + "_" + \
+                str(args.eval_basel).replace('.','*') + "_" + \
+                str(args.num_t_same_input).replace('.','*') + "___" + \
                 str(args.schedule).replace('.','*') + "_" + \
                 str(args.hid_siz).replace('.','*') + "_" + \
                 str(args.num_hid_layers).replace('.','*') + "_" + \
