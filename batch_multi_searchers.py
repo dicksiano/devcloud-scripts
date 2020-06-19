@@ -3,24 +3,24 @@ import time
 import itertools
 
 ### INTEL DEV CLOUD PARAMETERS ###
-AGENTS_PER_NODE = [150]
+AGENTS_PER_NODE = [1]
 SEED = [1]
 
 ### AGENT PARAMETERS ###
 MAX_VS = [1.0]
-RADIUS =  [999999999999999]
-REWARD_RADIUS = [999999999999999]
-COOLDOWN_TIME =  [999999999999999]
-REWARD_FACTORS = [1, 0.000001]
-COLLISION_VELS = [2.4, 1.907]
+RADIUS =  [2.0]
+REWARD_RADIUS = [2.0]
+COOLDOWN_TIME =  [50]
+REWARD_FACTORS = [0.001]
+COLLISION_VELS = [2.1]
 KP = [15]
 BARRIER = [ [40, 40, 40] ]
-DERIVATIVE_OBS = [999999999999999]
-EVALUATE_BASELINE = [999999999999999]
-NUM_STEP_SAME_INPUT = [999999999999999]
+DERIVATIVE_OBS = [0]
+EVALUATE_BASELINE = [0]
+NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
-SCHEDULES = ['linear', 'constant']
+SCHEDULES = ['constant']
 HID_SIZE = [8]
 NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-3]
@@ -45,23 +45,23 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
-    for replica in range(5):
+    for replica in range(1):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
                     str(b), 
-                    #str(c), 
-                    #str(d), 
-                    #str(e), 
+                    str(c), 
+                    str(d), 
+                    str(e), 
                     str(f), 
                     str(g), 
                     str(h), 
                     str( i[0] ), 
                     str( i[1] ), 
                     str( i[2] ), 
-                    #str(j), 
-                    #str(k), 
-                    #str(l), 
+                    str(j), 
+                    str(k), 
+                    str(l), 
                     str(m), 
                     str(n), 
                     str(o), 
