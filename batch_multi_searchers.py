@@ -8,7 +8,7 @@ SEED = [1]
 
 ### AGENT PARAMETERS ###
 MAX_VS = [1.0]
-RADIUS =  [2.0, 1.5]
+RADIUS =  [2.0]
 REWARD_RADIUS = [2.0]
 COOLDOWN_TIME =  [50]
 REWARD_FACTORS = [1, 0.001]
@@ -20,21 +20,21 @@ EVALUATE_BASELINE = [0]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
-SCHEDULES = ['constant', 'linear']
-HID_SIZE = [8, 64]
+SCHEDULES = ['constant', 'linear' ]
+HID_SIZE = [64]
 NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-7]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [10000000]
+MAXI_TIMESTEPS = [20000000]
 TIMESTEPS_AB = [4096]
-CLIP_PARAM = [ 0.1]
-ENT_COEFF = [0.01]
-EPOCHS = [ 10 ]
-LR = [1e-5, 1e-7]
+CLIP_PARAM = [ 0.1, 0.2, 0.3]
+ENT_COEFF = [ 0.01, 0.1]
+EPOCHS = [ 10, 30 ]
+LR = [1e-5]
 BATCH_SIZE = [1024]
-GAMMA = [0.9997, 0.99]
-LAMBD = [0.95, 0.999]
+GAMMA = [0.9997]
+LAMBD = [0.95 ]
 
 ### Dispatch  workers ###
 count = 0
