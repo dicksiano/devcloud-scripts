@@ -1,4 +1,4 @@
-import os
+	import os
 import time
 import itertools
 
@@ -17,22 +17,22 @@ KP = [15]
 BARRIER = [ [0, 0, 0] ]
 DERIVATIVE_OBS = [0]
 EVALUATE_BASELINE = [0]
-NUM_STEP_SAME_INPUT = [1]
+NUM_STEP_SAME_INPUT = [1,  8]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['constant', 'linear' ]
 HID_SIZE = [64]
 NUM_HIDDEN_LAYERS = [2]
-EXPL_RATE = [-7]
+EXPL_RATE = [-3,-7]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [25000000]
+MAXI_TIMESTEPS = [5000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.1]
 EPOCHS = [ 10 ]
-LR = [1e-3, 5e-3, 1e-5, 3e-5, 5e-5, 1e-7]
-BATCH_SIZE = [1024, 256]
+LR = [1e-3, 1e-5, 1e-7]
+BATCH_SIZE = [1024]
 GAMMA = [0.9997]
 LAMBD = [0.95 ]
 
