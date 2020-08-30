@@ -3,30 +3,30 @@ import time
 import itertools
 
 ### INTEL DEV CLOUD PARAMETERS ###
-AGENTS_PER_NODE = [150]
+AGENTS_PER_NODE = [15]
 SEED = [1]
 
 ### AGENT PARAMETERS ###
 MAX_VS = [1.0]
-RADIUS =  [2.0]
+RADIUS =  [1.5, 2.0, 3.0]
 REWARD_RADIUS = [2.0]
 COOLDOWN_TIME =  [50]
-REWARD_FACTORS = [1]
-COLLISION_VELS = [2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9]
-KP = [15]
-BARRIER = [ [0, 0, 0] ]
+REWARD_FACTORS = [1, 1e-3]
+COLLISION_VELS = [1.97]
+KP = [7]
+BARRIER = [ [1, 1, 1] ]
 DERIVATIVE_OBS = [0]
-EVALUATE_BASELINE = [0, 1]
+EVALUATE_BASELINE = [0]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['constant']
-HID_SIZE = [64]
+HID_SIZE = [8]
 NUM_HIDDEN_LAYERS = [2]
-EXPL_RATE = [-5]
+EXPL_RATE = [-6]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [25000000]
+MAXI_TIMESTEPS = [5000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -45,7 +45,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
-    for replica in range(1):
+    for replica in range(4):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
