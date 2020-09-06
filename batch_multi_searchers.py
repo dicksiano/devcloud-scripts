@@ -26,7 +26,7 @@ NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-6]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [25000000]
+MAXI_TIMESTEPS = [30000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -45,7 +45,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
-    for replica in range(4):
+    for replica in range(12):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
@@ -82,5 +82,5 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) 
         os.system(command)
 
         count = count + 1
-        time.sleep(120)
+        time.sleep(45)
 
