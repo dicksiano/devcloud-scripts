@@ -3,7 +3,7 @@ import time
 import itertools
 
 ### INTEL DEV CLOUD PARAMETERS ###
-AGENTS_PER_NODE = [150]
+AGENTS_PER_NODE = [30]
 SEED = [1]
 
 ### AGENT PARAMETERS ###
@@ -12,11 +12,11 @@ RADIUS =  [2.0]
 REWARD_RADIUS = [2.0]
 COOLDOWN_TIME =  [50]
 REWARD_FACTORS = [1]
-COLLISION_VELS = [2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9]
+COLLISION_VELS = [1.8,1.9, 2.1, 2.4]
 KP = [15]
 BARRIER = [ [0, 0, 0] ]
 DERIVATIVE_OBS = [0]
-EVALUATE_BASELINE = [0, 1]
+EVALUATE_BASELINE = [0]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
@@ -26,13 +26,13 @@ NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-5]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [25000000]
-TIMESTEPS_AB = [4096]
+MAXI_TIMESTEPS = [20000000]
+TIMESTEPS_AB = [512]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
 EPOCHS = [ 10 ]
 LR = [1e-5]
-BATCH_SIZE = [1024]
+BATCH_SIZE = [128]
 GAMMA = [0.9997]
 LAMBD = [0.95 ]
 
@@ -82,4 +82,4 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) 
         os.system(command)
 
         count = count + 1
-        time.sleep(1)
+        time.sleep(30)
