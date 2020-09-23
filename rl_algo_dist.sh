@@ -51,30 +51,4 @@ echo $( pwd )
 echo ${agents}
 echo ${max_timesteps}
 echo ${file}
-mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecovery \
-                                                    --learning_rate=${lr} \
-                                                    --timesteps_per_actorbatch=${timesteps_per_ab} \
-                                                    --batch_size=${batch_s} \
-                                                    --num_timesteps=${max_timesteps} \
-                                                    --kp=${kp} \
-                                                    --xw=${xw} \
-                                                    --yw=${yw} \
-                                                    --zw=${zw} \
-                                                    --max_vel=${max_v} \
-                                                    --reward_factor=${rw_fac} \
-                                                    --collision_vel=${col_vel} \
-                                                    --exploration_rate=${expl_rate} \
-                                                    --schedule=${sched} \
-                                                    --hid_siz=${hid_size} \
-                                                    --clip_param=${clip_param} \
-                                                    --ent_coeff=${ent_coeff} \
-                                                    --epochs=${epochs} \
-                                                    --gamma=${gamma} \
-                                                    --lambd=${lambd} \
-                                                    --num_hid_layers=${num_hid_layers} \
-                                                    --radius=${radius} \
-                                                    --reward_radius=${rew_radius} \
-                                                    --cooldown_time=${cooldown_time} \
-                                                    --derivative=${deriv_obs} \
-                                                    --eval_basel=${eval_baseline} \
-                                                    --num_t_same_input=${num_step_same_input}
+mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_soccer --num-timesteps=${max_timesteps}
