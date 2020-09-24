@@ -3,7 +3,7 @@ import time
 import itertools
 
 ### INTEL DEV CLOUD PARAMETERS ###
-AGENTS_PER_NODE = [19]
+AGENTS_PER_NODE = [20, 26]
 SEED = [1]
 
 ### AGENT PARAMETERS ###
@@ -23,10 +23,10 @@ NUM_STEP_SAME_INPUT = [1]
 SCHEDULES = ['constant']
 HID_SIZE = [64]
 NUM_HIDDEN_LAYERS = [2]
-EXPL_RATE = [-3, -5, -6, -7]
+EXPL_RATE = [-3]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [30000000]
+MAXI_TIMESTEPS = [100000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.00]
@@ -82,4 +82,4 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) 
         os.system(command)
 
         count = count + 1
-        time.sleep(10)
+        time.sleep(120)
