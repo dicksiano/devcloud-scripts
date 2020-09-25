@@ -43,6 +43,10 @@ lambd=${28}
 # Node file
 file=${29}
 
+# Symmetry and Height
+sym=${30}
+h=${31}
+
 cd $PBS_O_WORKDIR
 cd ~/ddpg-humanoid
 source activate learning-3d
@@ -51,4 +55,4 @@ echo $( pwd )
 echo ${agents}
 echo ${max_timesteps}
 echo ${file}
-mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_soccer --num-timesteps=${max_timesteps}
+mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_soccer --num-timesteps=${max_timesteps} --sym=${sym} --height=${h} --load-model  --model-dir=logs/20200924-224030_0/model

@@ -43,6 +43,9 @@ batch_s=${26}
 gamma=${27}
 lambd=${28}
 
+sym=${29}
+h=${30}
+
 # Creating mpi machine file
 touch ~/distributed_devcloud/nodes_file_${PBS_JOBID}
 
@@ -64,7 +67,7 @@ do
 	if [ "$i" -eq  "$[agents - 1]" ]; then
 	    echo "Starting last agent"
 	fi
-        ~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${radius} ${rew_radius} ${cooldown_time} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${deriv_obs} ${eval_baseline} ${num_step_same_input} true > ~/distributed_devcloud/agent_${agents}_${j}_${i}.txt &
+        ~/start_soccer3d_agent.sh ${SPORT} ${MPORT} ${max_v} ${radius} ${rew_radius} ${cooldown_time} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${deriv_obs} ${eval_baseline} ${num_step_same_input} true ${h}  > ~/distributed_devcloud/agent_${agents}_${j}_${i}.txt &
 	echo "finishing iteration ${i}"
 done 
 echo "finish."
@@ -74,7 +77,7 @@ sleep 10;
 ### RL SERVER ###
 echo "RL SERVER"
 echo $( pwd )
-~/devcloud-scripts/rl_algo_dist.sh ${j} ${agents} ${max_v} ${radius} ${rew_radius} ${cooldown_time} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${deriv_obs} ${eval_baseline} ${num_step_same_input} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes_file_${PBS_JOBID}
+~/devcloud-scripts/rl_algo_dist.sh ${j} ${agents} ${max_v} ${radius} ${rew_radius} ${cooldown_time} ${rw_fac} ${col_vel} ${kp} ${xw} ${yw} ${zw} ${deriv_obs} ${eval_baseline} ${num_step_same_input} ${sched} ${hid_size} ${num_hid_layers} ${expl_rate} ${max_timesteps} ${timesteps_per_ab} ${clip_param} ${ent_coeff} ${epochs} ${lr} ${batch_s} ${gamma} ${lambd} ~/distributed_devcloud/nodes_file_${PBS_JOBID} ${sym} ${h}
 
 
 ### Killing agents ###
