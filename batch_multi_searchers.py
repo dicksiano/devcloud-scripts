@@ -19,8 +19,8 @@ DERIVATIVE_OBS = [0]
 EVALUATE_BASELINE = [0]
 NUM_STEP_SAME_INPUT = [1]
 
-SYM = [ 'sym' ] #['sym', 'sem_sim' ]
-HEIGHT = [ 0.33 ] #[ 0.27, 0.33 ]
+SYM = ['sym', 'sem_sim' ]
+HEIGHT = [ 0.27, 0.33 ]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['constant']
@@ -29,7 +29,7 @@ NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-3]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [100000000]
+MAXI_TIMESTEPS = [10000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.00]
@@ -40,7 +40,7 @@ GAMMA = [0.99]
 LAMBD = [0.95 ]
 
 ### Dispatch  workers ###
-count = 0
+count = 777
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,

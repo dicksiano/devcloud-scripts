@@ -55,4 +55,4 @@ echo $( pwd )
 echo ${agents}
 echo ${max_timesteps}
 echo ${file}
-mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_soccer --num-timesteps=${max_timesteps} --sym=${sym} --height=${h} --load-model  --model-dir=logs/20200924-224030_0/model
+mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_soccer --num-timesteps=${max_timesteps} --sym=${sym} --height=${h} #--load-model  --model-dir=logs/20200923-181021_0/model
