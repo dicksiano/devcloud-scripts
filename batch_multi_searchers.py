@@ -16,7 +16,7 @@ COLLISION_VELS = [1.8,1.9, 2.1, 2.4]
 KP = [15]
 BARRIER = [ [0, 0, 0] ]
 DERIVATIVE_OBS = [0]
-EVALUATE_BASELINE = [0]
+EVALUATE_BASELINE = [0, 1]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
@@ -82,4 +82,4 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) 
         os.system(command)
 
         count = count + 1
-        time.sleep(30)
+        time.sleep(90)
