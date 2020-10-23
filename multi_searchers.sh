@@ -1,4 +1,4 @@
-#PBS -l walltime=01:35:00
+#PBS -l walltime=06:35:00
 #PBS -o multi_${PBS_JOBID}-o.txt
 #PBS -e multi_${PBS_JOBID}-e.txt
 
