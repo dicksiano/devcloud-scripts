@@ -16,7 +16,7 @@ COLLISION_VELS = [2.1]
 KP = [15]
 BARRIER = [ [0, 0, 0] ]
 DERIVATIVE_OBS = [0]
-EVALUATE_BASELINE = [0]
+EVALUATE_BASELINE = [1]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
@@ -37,7 +37,7 @@ GAMMA = [0.9997]
 LAMBD = [0.95 ]
 
 ### Dispatch  workers ###
-count = 100000
+count = 110000
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
@@ -45,7 +45,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
-    for replica in range(12):
+    for replica in range(8):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
