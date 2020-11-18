@@ -40,8 +40,14 @@ batch_s=${26}
 gamma=${27}
 lambd=${28}
 
+### RW DEFINITION: WITH OR WITHOUT PRIORS ###
+prior=${29}
+### ALPHA
+alpha=${30}
+
 # Node file
-file=${29}
+file=${31}
+
 
 cd $PBS_O_WORKDIR
 cd ~/ddpg-humanoid
@@ -77,4 +83,6 @@ mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecov
                                                     --cooldown_time=${cooldown_time} \
                                                     --derivative=${deriv_obs} \
                                                     --eval_basel=${eval_baseline} \
-                                                    --num_t_same_input=${num_step_same_input}
+                                                    --num_t_same_input=${num_step_same_input} \
+                                                    --prior=${prior} \
+                                                    --alpha=${alpha}

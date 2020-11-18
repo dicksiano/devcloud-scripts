@@ -14,19 +14,19 @@ COOLDOWN_TIME =  [50]
 REWARD_FACTORS = [1]
 COLLISION_VELS = [2.1]
 KP = [15]
-BARRIER = [ [0, 0, 0] ]
+BARRIER = [ [40, 40, 40] ]
 DERIVATIVE_OBS = [0]
 EVALUATE_BASELINE = [1,0]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['constant']
-HID_SIZE = [64]
+HID_SIZE = [8]
 NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-5]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [70000000]
+MAXI_TIMESTEPS = [60000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -36,15 +36,23 @@ BATCH_SIZE = [1024]
 GAMMA = [0.9997]
 LAMBD = [0.95 ]
 
+
+### RW DEFINITION: WITH OR WITHOUT PRIORS ###
+PRIOR = [0, 1]
+
+### ALPHA COLLISION ###
+ALPHA = [0]
+
 ### Dispatch  workers ###
 count = 11002444
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
-                    MAXI_TIMESTEPS, TIMESTEPS_AB, CLIP_PARAM, ENT_COEFF, EPOCHS, LR, BATCH_SIZE, GAMMA, LAMBD)
+                    MAXI_TIMESTEPS, TIMESTEPS_AB, CLIP_PARAM, ENT_COEFF, EPOCHS, LR, BATCH_SIZE, GAMMA, LAMBD,
+                    PRIOR, ALPHA)
 
 
-for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) in search_space:
+for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1) in search_space:
     for replica in range(8):
         strings = ["qsub -F \"" , 
                     str(count),
@@ -74,7 +82,9 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z) 
                     str(v), 
                     str(x), 
                     str(y), 
-                    str(z), "\" multi_searchers.sh" ]
+                    str(z), 
+                    str(a1), 
+                    str(b1), "\" multi_searchers.sh" ]
 
         command = ' '.join(strings)
       

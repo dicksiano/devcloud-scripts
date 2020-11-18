@@ -112,6 +112,10 @@ def main():
     parser.add_argument('--gamma', type=float, default=0.99)
     parser.add_argument('--lambd', type=float, default=0.95)
 
+
+    parser.add_argument('--prior', type=int, default=9999)
+    parser.add_argument('--alpha', type=float, default=-9999)
+
     # PPO parameters
     args = parser.parse_args()
     # logger.configure()
@@ -141,8 +145,11 @@ def main():
                 str(args.learning_rate).replace('.','*') + "_" + \
                 str(args.batch_size).replace('.','*') + "_" + \
                 str(args.gamma).replace('.','*') + "_" + \
-                str(args.lambd).replace('.','*')
+                str(args.lambd).replace('.','*')+ "_" + \
+                str(args.prior).replace('.','*')+ "_" + \
+                str(args.alpha).replace('.','*')
     
+    print("Last updated: 18/nov/2020")
     print(filename)
     #logger.set_dir(logger.get_dir()+'___'+filename)
 
