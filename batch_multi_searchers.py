@@ -12,11 +12,11 @@ RADIUS =  [2.0]
 REWARD_RADIUS = [2.0]
 COOLDOWN_TIME =  [50]
 REWARD_FACTORS = [1]
-COLLISION_VELS = [2.1]
+COLLISION_VELS = [2.1, 2.2, 2.3, 2.5]
 KP = [15]
 BARRIER = [ [40, 40, 40] ]
 DERIVATIVE_OBS = [0]
-EVALUATE_BASELINE = [1,0]
+EVALUATE_BASELINE = [1]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
@@ -26,7 +26,7 @@ NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-5]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [60000000]
+MAXI_TIMESTEPS = [10000000]
 TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -38,13 +38,13 @@ LAMBD = [0.95 ]
 
 
 ### RW DEFINITION: WITH OR WITHOUT PRIORS ###
-PRIOR = [0, 1]
+PRIOR = [ 1]
 
 ### ALPHA COLLISION ###
 ALPHA = [0]
 
 ### Dispatch  workers ###
-count = 11002444
+count = 9992444
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
@@ -53,7 +53,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1) in search_space:
-    for replica in range(8):
+    for replica in range(1):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
@@ -92,4 +92,4 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, 
         os.system(command)
 
         count = count + 1
-        time.sleep(120)
+        time.sleep(125)
