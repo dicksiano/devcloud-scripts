@@ -41,7 +41,7 @@ LAMBD = [0.95 ]
 PRIOR = [ 1]
 
 ### ALPHA COLLISION ###
-ALPHA = [ 0]
+ALPHA = [ 90, -90]
 
 ### Dispatch  workers ###
 count = 11111
@@ -53,7 +53,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1) in search_space:
-    for replica in range(4):
+    for replica in range(2):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
