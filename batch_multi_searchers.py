@@ -41,10 +41,10 @@ LAMBD = [0.95 ]
 PRIOR = [ 1]
 
 ### ALPHA COLLISION ###
-ALPHA = [ 90, -90]
+ALPHA = [0,  90, -90]
 
 ### Dispatch  workers ###
-count = 11111
+count = 133111
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
@@ -53,7 +53,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1) in search_space:
-    for replica in range(2):
+    for replica in range(1):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
