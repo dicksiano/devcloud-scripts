@@ -87,4 +87,4 @@ mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecov
                                                     --prior=${prior} \
                                                     --alpha=${alpha} \
                                                     --load-model \
-                                                    --model-dir=logs/20201023-214550_0/model
+                                                    --model-dir=logs/20201026-093529_0/model
