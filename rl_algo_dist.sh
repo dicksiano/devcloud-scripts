@@ -85,4 +85,6 @@ mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecov
                                                     --eval_basel=${eval_baseline} \
                                                     --num_t_same_input=${num_step_same_input} \
                                                     --prior=${prior} \
-                                                    --alpha=${alpha}
+                                                    --alpha=${alpha} \
+                                                    --load-model \
+                                                    --model-dir=logs/20201119-161424_0/model
