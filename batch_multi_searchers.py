@@ -21,18 +21,18 @@ NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['constant']
-HID_SIZE = [64]
+HID_SIZE = [8]
 NUM_HIDDEN_LAYERS = [2]
-EXPL_RATE = [-5]
+EXPL_RATE = [-3, -5]
 
 ### PPO PARAMETERS ###
 MAXI_TIMESTEPS = [20000000]
-TIMESTEPS_AB = [512]
+TIMESTEPS_AB = [4096]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
 EPOCHS = [ 10 ]
-LR = [1e-5]
-BATCH_SIZE = [128]
+LR = [1e-5, 1e-3]
+BATCH_SIZE = [1024]
 GAMMA = [0.9997]
 LAMBD = [0.95 ]
 
@@ -44,7 +44,7 @@ PRIOR = [ 1]
 ALPHA = [ 0]
 
 ### Dispatch  workers ###
-count = 60
+count = 11111
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
@@ -53,7 +53,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1) in search_space:
-    for replica in range(8):
+    for replica in range(4):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
