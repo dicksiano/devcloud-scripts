@@ -43,16 +43,19 @@ PRIOR = [ 1]
 ### ALPHA COLLISION ###
 ALPHA = [-90]
 
+### RANDOM ###
+RAND = [1]
+
 ### Dispatch  workers ###
 count = 10000
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
                     MAXI_TIMESTEPS, TIMESTEPS_AB, CLIP_PARAM, ENT_COEFF, EPOCHS, LR, BATCH_SIZE, GAMMA, LAMBD,
-                    PRIOR, ALPHA)
+                    PRIOR, ALPHA, RAND)
 
 
-for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1) in search_space:
+for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1, c1) in search_space:
     for replica in range(1):
         strings = ["qsub -F \"" , 
                     str(count),
@@ -84,7 +87,8 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, 
                     str(y), 
                     str(z), 
                     str(a1), 
-                    str(b1), "\" multi_searchers.sh" ]
+                    str(b1),
+                    str(c1), "\" multi_searchers.sh" ]
 
         command = ' '.join(strings)
       
