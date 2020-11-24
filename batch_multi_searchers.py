@@ -16,17 +16,17 @@ COLLISION_VELS = [2.1]
 KP = [15]
 BARRIER = [ [40, 40, 40] ]
 DERIVATIVE_OBS = [0]
-EVALUATE_BASELINE = [0]
+EVALUATE_BASELINE = [0, 1]
 NUM_STEP_SAME_INPUT = [1]
 
 ### NEURAL NET PARAMETERS ###
 SCHEDULES = ['constant']
 HID_SIZE = [64]
 NUM_HIDDEN_LAYERS = [2]
-EXPL_RATE = [-50000]
+EXPL_RATE = [-5]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [5000000]
+MAXI_TIMESTEPS = [20000000]
 TIMESTEPS_AB = [512]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -41,13 +41,13 @@ LAMBD = [0.95 ]
 PRIOR = [ 1]
 
 ### ALPHA COLLISION ###
-ALPHA = [-90]
+ALPHA = [0]
 
 ### RANDOM ###
 RAND = [1]
 
 ### Dispatch  workers ###
-count = 10000
+count = 100
 search_space = itertools.product(AGENTS_PER_NODE,
                     MAX_VS, RADIUS, REWARD_RADIUS, COOLDOWN_TIME, REWARD_FACTORS, COLLISION_VELS, KP, BARRIER, DERIVATIVE_OBS, EVALUATE_BASELINE, NUM_STEP_SAME_INPUT,
                     SCHEDULES, HID_SIZE, NUM_HIDDEN_LAYERS, EXPL_RATE,
@@ -56,7 +56,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1, c1) in search_space:
-    for replica in range(1):
+    for replica in range(2):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
@@ -96,4 +96,4 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, 
         os.system(command)
 
         count = count + 1
-        time.sleep(5)
+        time.sleep(125)
