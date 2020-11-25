@@ -26,7 +26,7 @@ NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-5]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [20000000]
+MAXI_TIMESTEPS = [30000000]
 TIMESTEPS_AB = [512]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -41,10 +41,10 @@ LAMBD = [0.95 ]
 PRIOR = [ 1]
 
 ### ALPHA COLLISION ###
-ALPHA = [88, -88]
+ALPHA = [0]
 
 ### RANDOM ###
-RAND = [0]
+RAND = [1]
 
 ### Dispatch  workers ###
 count = 1
