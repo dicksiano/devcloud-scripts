@@ -26,7 +26,7 @@ NUM_HIDDEN_LAYERS = [2]
 EXPL_RATE = [-5]
 
 ### PPO PARAMETERS ###
-MAXI_TIMESTEPS = [30000000]
+MAXI_TIMESTEPS = [4000000]
 TIMESTEPS_AB = [512]
 CLIP_PARAM = [ 0.1 ]
 ENT_COEFF = [ 0.01]
@@ -41,7 +41,7 @@ LAMBD = [0.95 ]
 PRIOR = [ 1]
 
 ### ALPHA COLLISION ###
-ALPHA = [0]
+ALPHA = [0]#, 89, -89]
 
 ### RANDOM ###
 RAND = [1]
@@ -56,7 +56,7 @@ search_space = itertools.product(AGENTS_PER_NODE,
 
 
 for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, a1, b1, c1) in search_space:
-    for replica in range(4):
+    for replica in range(1):
         strings = ["qsub -F \"" , 
                     str(count),
                     str(a), 
@@ -96,4 +96,4 @@ for (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, x, y, z, 
         os.system(command)
 
         count = count + 1
-        time.sleep(125)
+        time.sleep(15)

@@ -88,8 +88,11 @@ mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecov
                                                     --num_t_same_input=${num_step_same_input} \
                                                     --prior=${prior} \
                                                     --alpha=${alpha} \
-                                                    --is_random=${israndom}
-                                                    #--load-model \
-                                                    #--model-dir=logs/20201119-161424_0/model      CP0
-                                                    #--model-dir=logs/20201023-214550_0/model      CP90
-                                                    #--model-dir=logs/20201026-093529_0/model      CP-90
+                                                    --is_random=${israndom} \
+                                                    --load-model \
+						    --model-dir=logs/20201120-092016_0/model      #CP0
+
+						   # --model-dir=logs/20201124-190602_0/model      #CPrand
+                                                   # --model-dir=logs/20201120-052328_0/model      #CP0
+                                                   # --model-dir=logs/20201124-165235_0/model      #CP90
+                                                   # --model-dir=logs/20201124-175710_0/model      #CP-90
