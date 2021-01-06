@@ -116,6 +116,8 @@ def main():
     parser.add_argument('--prior', type=int, default=9999)
     parser.add_argument('--alpha', type=float, default=-9999)
     parser.add_argument('--is_random', type=int, default=-9999)
+    parser.add_argument('--initialrandom', type=int, default=-9999)
+    parser.add_argument('--logstate', type=int, default=-9999)
 
     # PPO parameters
     args = parser.parse_args()
@@ -149,10 +151,12 @@ def main():
                 str(args.lambd).replace('.','*')+ "_" + \
                 str(args.prior).replace('.','*')+ "_" + \
                 str(args.alpha).replace('.','*') + "_" + \
-                str(args.is_random).replace('.','*') 
+                str(args.is_random).replace('.','*')  + "_" + \
+                str(args.initialrandom).replace('.','*')  + "_" + \
+                str(args.logstate).replace('.','*') 
     
     
-    print("Last updated: 23/nov/2020")
+    print("Last updated: 05/jan/2021")
     print(filename)
     #logger.set_dir(logger.get_dir()+'___'+filename)
 

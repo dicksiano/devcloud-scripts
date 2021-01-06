@@ -46,9 +46,11 @@ prior=${29}
 alpha=${30}
 ### RANDOM
 israndom=${31}
+initialrandom=${32}
+logstate=${33}
 
 # Node file
-file=${32}
+file=${34}
 
 
 cd $PBS_O_WORKDIR
@@ -89,8 +91,10 @@ mpirun -n ${agents} -machinefile ${file}  python -m baselines.ppo1.run_pushrecov
                                                     --prior=${prior} \
                                                     --alpha=${alpha} \
                                                     --is_random=${israndom} \
-                                                    --load-model \
-						    --model-dir=logs/20201120-092016_0/model      #CP0
+                                                    --initialrandom=${initialrandom} \
+                                                    --logstate=${logstate} #  \
+                           #                         --load-model \
+						   # --model-dir=logs/20201120-092016_0/model      #CP0
 
 						   # --model-dir=logs/20201124-190602_0/model      #CPrand
                                                    # --model-dir=logs/20201120-052328_0/model      #CP0
